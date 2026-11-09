@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[paperwidth=13.4cm,paperheight=6.9cm,margin=1mm]{geometry}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small,line join=round]
+% ================= (a) 浸润液体：液面上升 =================
+\begin{scope}
+  % 管外液体
+  \fill[cyan!12] (0,-2.0) rectangle (0.90,1.10);
+  \fill[cyan!12] (4.50,-2.0) rectangle (5.40,1.10);
+  % 管内液体（上边界即弯月面）
+  \fill[cyan!16] (1.25,-2.0) -- (4.15,-2.0) -- (4.15,2.55)
+      .. controls (3.40,2.28) and (2.00,2.28) .. (1.25,2.55) -- cycle;
+  \draw[blue!55!black,thick] (1.25,2.55) .. controls (2.00,2.28) and (3.40,2.28) .. (4.15,2.55);
+  % 管壁
+  \fill[gray!12] (0.90,-2.0) rectangle (1.25,3.60);
+  \fill[gray!12] (4.15,-2.0) rectangle (4.50,3.60);
+  \draw[thick] (0.90,-2.0) -- (0.90,3.60) -- (1.25,3.60) -- (1.25,-2.0);
+  \draw[thick] (4.15,-2.0) -- (4.15,3.60) -- (4.50,3.60) -- (4.50,-2.0);
+  % 管外液面
+  \draw[dashed,gray] (0,1.10) -- (1.25,1.10);
+  \draw[dashed,gray] (4.15,1.10) -- (5.40,1.10);
+  % 高度 h
+  \draw[<->] (2.70,1.10) -- (2.70,2.26) node[midway,right,font=\scriptsize] {$h$};
+  % 内径 d
+  \draw[<->] (1.25,0.20) -- (4.15,0.20) node[midway,below,font=\scriptsize] {$d$};
+  % 接触角与表面张力
+  \coordinate (A) at (4.15,2.55);
+  \draw[gray] (A) ++(199.8:0.80) arc (199.8:270:0.80);
+  \node[font=\scriptsize,gray] at ($(A)+(232:1.05)$) {$\theta$};
+  \draw[->,thick,red!65!black] (A) -- ++(199.8:0.95) node[below left,font=\scriptsize] {$\gamma$};
+  \node[font=\small] at (2.70,-2.70) {(a) 玻璃管插在水中};
+\end{scope}
+% ================= (b) 不浸润液体：液面下降 =================
+\begin{scope}[shift={(7.9,0)}]
+  % 管外液体
+  \fill[cyan!12] (0,-2.0) rectangle (0.90,1.30);
+  \fill[cyan!12] (4.50,-2.0) rectangle (5.40,1.30);
+  % 管内液体（凸面）
+  \fill[cyan!16] (1.25,-2.0) -- (4.15,-2.0) -- (4.15,0.45)
+      .. controls (3.40,0.82) and (2.00,0.82) .. (1.25,0.45) -- cycle;
+  \draw[blue!55!black,thick] (1.25,0.45) .. controls (2.00,0.82) and (3.40,0.82) .. (4.15,0.45);
+  % 管壁
+  \fill[gray!12] (0.90,-2.0) rectangle (1.25,3.60);
+  \fill[gray!12] (4.15,-2.0) rectangle (4.50,3.60);
+  \draw[thick] (0.90,-2.0) -- (0.90,3.60) -- (1.25,3.60) -- (1.25,-2.0);
+  \draw[thick] (4.15,-2.0) -- (4.15,3.60) -- (4.50,3.60) -- (4.50,-2.0);
+  % 管外液面
+  \draw[dashed,gray] (0,1.30) -- (1.25,1.30);
+  \draw[dashed,gray] (4.15,1.30) -- (5.40,1.30);
+  % 高度 h
+  \draw[<->] (2.60,0.82) -- (2.60,1.30) node[midway,right,font=\scriptsize] {$h$};
+  % 接触角与表面张力
+  \coordinate (B) at (4.15,0.45);
+  \draw[gray] (B) ++(153.7:0.75) arc (153.7:270:0.75);
+  \node[font=\scriptsize,gray] at ($(B)+(212:0.98)$) {$\theta$};
+  \draw[->,thick,red!65!black] (B) -- ++(153.7:0.95) node[above left,font=\scriptsize] {$\gamma$};
+  \node[font=\small] at (2.70,-2.70) {(b) 玻璃管插在水银中};
+\end{scope}
+\end{tikzpicture}
+\end{document}

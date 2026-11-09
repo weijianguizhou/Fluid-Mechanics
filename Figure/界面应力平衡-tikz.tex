@@ -1,0 +1,66 @@
+\documentclass{article}
+\usepackage[paperwidth=14.8cm,paperheight=6.6cm,margin=1mm]{geometry}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small,line join=round,line cap=round]
+% ================= (a) 微元曲面 =================
+\begin{scope}
+  \fill[blue!6] (0,0)
+    .. controls (1.10,-0.20) and (2.50,-0.24) .. (3.45,0.30)
+    .. controls (3.58,0.95) and (3.52,1.42) .. (3.32,1.82)
+    .. controls (2.25,2.14) and (1.05,2.08) .. (0.28,1.64)
+    .. controls (0.00,1.20) and (-0.08,0.50) .. cycle;
+  \draw[blue!55!black,thick] (0,0)
+    .. controls (1.10,-0.20) and (2.50,-0.24) .. (3.45,0.30)
+    .. controls (3.58,0.95) and (3.52,1.42) .. (3.32,1.82)
+    .. controls (2.25,2.14) and (1.05,2.08) .. (0.28,1.64)
+    .. controls (0.00,1.20) and (-0.08,0.50) .. cycle;
+  \draw[blue!30,thin] (1.10,0.02) .. controls (1.30,0.70) and (1.22,1.50) .. (1.55,1.98);
+  \draw[blue!30,thin] (2.30,0.06) .. controls (2.50,0.80) and (2.42,1.55) .. (2.72,2.02);
+  \draw[blue!30,thin] (0.30,0.42) .. controls (1.30,0.62) and (2.40,0.55) .. (3.42,0.80);
+  \draw[blue!30,thin] (0.18,1.02) .. controls (1.20,1.30) and (2.30,1.24) .. (3.40,1.48);
+  % 边界上的表面张力（在曲面切平面内、垂直于分割线）
+  \draw[->,thick,red!65!black] (1.80,-0.20) -- (1.98,-1.05) node[below] {$\gamma\,\delta l_1$};
+  \draw[->,thick,red!65!black] (1.82,2.06) -- (2.06,2.86) node[above] {$\gamma\,\delta l_1$};
+  \draw[->,thick,red!65!black] (-0.01,1.02) -- (-0.98,1.16) node[left] {$\gamma\,\delta l_2$};
+  \draw[->,thick,red!65!black] (3.45,0.98) -- (4.10,1.08) node[right] {$\gamma\,\delta l_2$};
+  % 法向
+  \draw[->,very thick,black!75] (1.62,1.00) -- (2.55,2.45) node[right] {$\boldsymbol{n}$};
+  % 坐标轴
+  \draw[->,black!60] (0.45,0.18) -- (1.05,0.28) node[below right] {$X_1$};
+  \draw[->,black!60] (0.45,0.18) -- (0.05,0.72) node[left] {$X_2$};
+  \draw[->,black!60] (0.45,0.18) -- (0.48,0.98) node[above] {$X_3$};
+  \node[gray,font=\scriptsize] at (2.15,0.55) {面积 $A$};
+  \node[gray,font=\scriptsize] at (0.55,-0.62) {边界 $C$};
+  \node[gray] at (1.55,-1.95) {(a) 微元曲面与边界上的表面张力};
+\end{scope}
+% ================= (b) 曲率与力平衡 =================
+\begin{scope}[shift={(8.55,-0.60)}]
+  % 曲界面（圆弧），曲率中心 O 在凹面一侧
+  \draw[thick,blue!55!black] (122:2.40) arc (122:58:2.40);
+  \draw[dashed,gray!70] (0,0) -- (122:2.40);
+  \draw[dashed,gray!70] (0,0) -- (58:2.40);
+  \node[gray,font=\scriptsize] at (0,-0.30) {$O$};
+  % 主曲率半径与圆心角
+  \node[gray,font=\scriptsize,fill=white,inner sep=1pt] at (122:1.85) {$R_1$};
+  \draw[gray] (58:1.15) arc (58:122:1.15);
+  \node[gray,font=\scriptsize,fill=white,inner sep=1pt] at (90:0.72) {$\delta\alpha_1$};
+  % 端面上的表面张力
+  \draw[->,thick,red!65!black] (122:2.40) -- ++(212:0.90) node[left] {$\gamma\,\delta l_2$};
+  \draw[->,thick,red!65!black] (58:2.40) -- ++(-32:0.90) node[right] {$\gamma\,\delta l_2$};
+  % 张力合力（指向曲率中心，即凹面一侧）
+  \draw[->,very thick,black!70] (-0.55,2.34) -- (-0.55,1.90) node[left,font=\scriptsize] {$\boldsymbol{F}_\gamma$};
+  % 界面两侧的压强
+  \draw[->,thick,orange!85!black] (0.45,3.05) -- (0.45,2.55);
+  \node[font=\scriptsize,orange!85!black,anchor=west] at (0.57,3.05) {$p_+$};
+  \draw[->,very thick,orange!85!black] (0.45,1.40) -- (0.45,2.10);
+  \node[font=\scriptsize,orange!85!black,anchor=east] at (0.33,1.60) {$p_-$};
+  \node[gray] at (0,-1.35) {(b) 曲率与张力合力};
+  \node[gray,font=\scriptsize] at (0,-1.78) {（$p_+$：凸面一侧压强，$p_-$：凹面一侧压强）};
+\end{scope}
+\end{tikzpicture}
+\end{document}

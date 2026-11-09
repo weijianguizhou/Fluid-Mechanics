@@ -1,0 +1,111 @@
+% !TeX root = 流体力学笔记.tex
+% 流体力学笔记 —— 流体运动学
+% 据 笔记/3.流体运动学.md 整理
+
+我们试图去解析这个世界，常常想用数学式子把万物的规律表示出来。
+
+而在流体力学中，描述流体质点运动的方法主要有两种，即\textbf{拉格朗日方法}和\textbf{欧拉方法}。
+
+\section{描述流体运动的两种方法}
+
+\subsection{拉格朗日方法}
+
+跟踪一个流体质点的运动，\textbf{随波逐流}。
+
+设初始时刻 $t=0$ 流体质点的坐标（标记）为 $(a,b,c)$，则流体质点的矢径为
+\[
+\boldsymbol{X}=\boldsymbol{X}(a,b,c,t)
+\]
+任一物理量可写成
+\[
+Q=Q(a,b,c,t)
+\]
+速度与加速度分别为
+\[
+\boldsymbol{U}=\frac{\partial\boldsymbol{X}(a,b,c,t)}{\partial t},\qquad
+\boldsymbol{a}=\frac{\partial\boldsymbol{U}(a,b,c,t)}{\partial t}
+\]
+
+\subsection{欧拉方法}
+
+着眼于空间点，\textbf{守株待兔}。
+\[
+\boldsymbol{v}=\boldsymbol{v}(\boldsymbol{x},t)=\boldsymbol{v}(x,y,z,t)
+\]
+\[
+p=p(\boldsymbol{x},t),\qquad\rho=\rho(\boldsymbol{x},t)
+\]
+
+\subsection{欧拉描述与拉格朗日描述的互换}
+\[
+\boldsymbol{U}_{E}(\boldsymbol{x},t)
+=\left.\frac{\partial\boldsymbol{X}(\boldsymbol{A},t)}{\partial t}\right|_{\boldsymbol{A}=\boldsymbol{A}(\boldsymbol{x},t)},
+\qquad
+t=0:\ \boldsymbol{X}=\boldsymbol{A}
+\]
+
+\subsection{质点导数}
+
+\begin{definition}[质点导数]
+	流体质点的物理量对时间的变化率，称为该物理量的质点导数。
+\end{definition}
+
+\textbf{拉格朗日描述中：}
+\[
+Q=Q(\boldsymbol{A},t),\qquad
+\frac{\partial Q}{\partial t}=\left.\frac{\partial Q(\boldsymbol{A},t)}{\partial t}\right|_{\boldsymbol{A}}
+\]
+因为 $\boldsymbol{A}$ 不随时间变化。
+
+\textbf{欧拉描述中：}
+\[
+\frac{\mathrm{D}Q}{\mathrm{D}t}=\frac{\partial Q}{\partial t}+\boldsymbol{U}\cdot\nabla Q
+\]
+其中 $\dfrac{\partial Q}{\partial t}$ 为\textbf{局部导数}，$\boldsymbol{U}\cdot\nabla Q$ 为\textbf{迁移导数}。
+
+\section{流场的几何描述}
+
+\subsection{迹线（同一质点、不同时刻）}
+
+\begin{definition}[迹线]
+	流体质点运动的轨迹称为迹线。
+\end{definition}
+
+\begin{itemize}
+	\item 拉格朗日描述：$\boldsymbol{X}=\boldsymbol{X}(\boldsymbol{A},t)$
+	\item 欧拉描述：$\dfrac{\mathrm{d}\boldsymbol{x}}{\mathrm{d}t}=\boldsymbol{U}_{E}(\boldsymbol{x},t)$
+\end{itemize}
+
+\subsection{流线（不同质点、同一时刻）}
+
+\begin{definition}[流线]
+	流线是速度场的向量线，它是某一时刻的空间曲线，该曲线上任一点的切线方向与该点的流体速度方向一致。
+\end{definition}
+
+即
+\[
+\boldsymbol{U}\times\mathrm{d}\boldsymbol{x}=\boldsymbol{0}
+\]
+
+\textbf{性质：}
+
+\begin{enumerate}
+	\item 一般情况下流线不能相交，同一时刻通过一点只有一根流线；
+	      例外：\textbf{驻点}（速度为零）、\textbf{奇点}（速度为无穷大）。
+	\item 定常流动中，流线与迹线重合。
+\end{enumerate}
+
+\subsection{流管}
+
+在给定瞬时，通过任一非流线的曲线上各点作流线，这些流线组成的曲面称为\textbf{流面}；
+
+若曲线为封闭曲线，则构成\textbf{管状曲面}（流管侧面），该曲面包围的空间称为\textbf{流管}。注意：流管侧面不可能有流体通过。
+
+\section{流体微团运动分析}
+
+\subsection{几何分析}
+
+正交微元六面体经过微小时间间隔将变成\textbf{斜平行六面体}。
+
+% 注：原笔记（笔记/3.流体运动学.md）写到这里为止，后续内容（线变形、角变形、
+% 旋转、速度分解定理等）尚未整理，待补。

@@ -1,0 +1,30 @@
+\documentclass{article}
+\usepackage[paperwidth=8.2cm,paperheight=7.0cm,margin=1mm]{geometry}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small,line join=round]
+  % ===== 固体壁面 =====
+  \fill[cyan!12] (-1.5,-3.0) rectangle (0,3.0);
+  \pattern[pattern=north east lines,pattern color=cyan!35] (-1.5,-3.0) rectangle (0,3.0);
+  \draw[cyan!55!black,thick] (0,-3.0) -- (0,3.0);
+  \node[font=\scriptsize,rotate=90] at (-0.75,0) {固体};
+  % ===== 两种流体（界面为直线，与壁面成接触角） =====
+  \coordinate (A) at (0,1.15);
+  \fill[blue!8]   (A) -- (6.6,-0.60) -- (6.6,3.0) -- (0,3.0) -- cycle;
+  \fill[orange!12] (A) -- (6.6,-0.60) -- (6.6,-3.0) -- (0,-3.0) -- cycle;
+  \draw[blue!55!black,thick] (A) -- (6.6,-0.60);
+  \fill (A) circle (1.4pt);
+  % ===== 接触角 =====
+  \draw[gray] (A) ++(-14.7:1.25) arc (-14.7:-90:1.25);
+  \node[font=\scriptsize,gray] at ($(A)+(-52:1.55)$) {$\theta_1$};
+  \draw[gray] (A) ++(90:1.25) arc (90:-14.7:1.25);
+  \node[font=\scriptsize,gray] at ($(A)+(38:1.55)$) {$\theta_2$};
+  % ===== 流体标注 =====
+  \node[font=\scriptsize] at (3.4,-2.10) {流体 1};
+  \node[font=\scriptsize] at (4.2,1.85) {流体 2};
+\end{tikzpicture}
+\end{document}

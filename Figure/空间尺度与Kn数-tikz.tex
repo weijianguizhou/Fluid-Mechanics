@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[paperwidth=15.7cm,paperheight=3.9cm,margin=1mm]{geometry}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\pagestyle{empty}
+\begin{document}
+\begin{tikzpicture}[>=Stealth,font=\small]
+% ===== 轴 =====
+\draw[->,thick] (0.2,0) -- (15.1,0);
+\node[above,font=\scriptsize] at (14.85,0) {$Kn$};
+\foreach \x/\v in {1.2/0.001, 3.6/0.01, 6.4/0.1, 9.6/1, 12.8/10}
+  \draw[thick] (\x,0.10) -- (\x,-0.10) node[below=2pt,font=\scriptsize] {$\v$};
+% ===== 分区色带 =====
+\fill[green!30] (0.2,0.10) rectangle (3.6,0.34);
+\fill[cyan!35]  (3.6,0.10) rectangle (6.4,0.34);
+\fill[violet!25] (6.4,0.10) rectangle (12.8,0.34);
+\fill[red!18] (12.8,0.10) rectangle (14.6,0.34);
+\foreach \x in {3.6,6.4,12.8} \draw[gray!50] (\x,0.10) -- (\x,0.34);
+% ===== 分区名称 =====
+\node[font=\scriptsize] at (1.9,-0.60) {连续介质区};
+\node[font=\scriptsize] at (5.0,-0.60) {滑移区};
+\node[font=\scriptsize] at (9.6,-0.60) {过渡区};
+\node[font=\scriptsize] at (13.7,-0.60) {自由分子区};
+% ===== 尺度 =====
+\node[font=\scriptsize,gray] at (5.0,-1.18) {宏观};
+\node[font=\scriptsize,gray] at (9.6,-1.18) {介观};
+\node[font=\scriptsize,gray] at (13.7,-1.18) {微观};
+% ===== 气体动理论模型 =====
+\draw[green!45!black,thick] (0.2,1.62) -- (14.6,1.62);
+\node[above,font=\scriptsize] at (7.4,1.62) {Boltzmann 方程};
+\draw[cyan!55!black,thick,fill=cyan!8] (0.2,0.92) rectangle (6.4,1.32);
+\node[font=\scriptsize] at (3.3,1.12) {Navier--Stokes 方程};
+\draw[violet!65!black,thick,dashed,fill=violet!8] (6.4,0.92) rectangle (9.6,1.32);
+\node[font=\scriptsize] at (8.0,1.12) {Burnett 方程};
+\draw[green!45!black,thick,dashed,fill=green!8] (12.8,0.72) rectangle (14.6,1.52);
+\node[font=\scriptsize,align=center] at (13.7,1.12) {无碰撞\\Boltzmann};
+\end{tikzpicture}
+\end{document}
